@@ -23,6 +23,8 @@ export const ContextProvider = ({ children }) => {
         2. Dashboard ALWAYS receives correct token
         3. No more needing page refresh  ---------- */
 
+
+
     const [token, setToken] = useState("");
 
     // Load token from localStorage ONCE when the app starts, thats why passed [] in useEffect

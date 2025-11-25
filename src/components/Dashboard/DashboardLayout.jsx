@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Graph from './Graph'
-import { useStoreContext } from '../ContextApi/ContextApi'
+import { useStoreContext } from '../contextApi/ContextApi'
 import { useFetchMyShortUrls, useFetchTotalClicks } from '../hooks/useQuery'
 import ShortenPopUp from './ShortenPopUp'
 import { FaLink } from 'react-icons/fa'
