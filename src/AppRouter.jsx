@@ -11,7 +11,7 @@ import { Toaster } from 'react-hot-toast'
 import DashboardLayout from './components/Dashboard/DashboardLayout'
 import ShortenUrlPage from './components/ShortenUrlPage';
 import PrivateRoute from './PrivateRoute';
-import ErrorPage from './components/Errorpage';
+import ErrorPage from './components/ErrorPage';
 
 const AppRouter = () => {
     return (
