@@ -4,7 +4,7 @@ import TextField from './TextField';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import api from './api/api';
-import { useStoreContext } from './contextApi/contextApi';
+import { useStoreContext } from './ContextApi/ContextApi';
 
 const LoginPage = () => {
 

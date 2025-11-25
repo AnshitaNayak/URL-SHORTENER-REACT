@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoCopy } from 'react-icons/io5';
 import { LiaCheckSolid } from 'react-icons/lia';
 import api from "../api/api";
-import { useStoreContext } from '../contextApi/contextApi';
+import { useStoreContext } from '../ContextApi/ContextApi';
 import { Hourglass } from 'react-loader-spinner';
 import Graph from './Graph';
 
