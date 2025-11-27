@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react'
 import { FaExternalLinkAlt, FaRegCalendarAlt } from 'react-icons/fa'
 import { MdAnalytics, MdOutlineAdsClick } from 'react-icons/md'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoCopy } from 'react-icons/io5';
 import { LiaCheckSolid } from 'react-icons/lia';
 import api from "../api/api";
@@ -23,7 +23,7 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
     const [selectedUrl, setSelectedUrl] = useState("");
     const [analyticsData, setAnalyticsData] = useState([]);
 
-    const subDomain = import.meta.env.VITE_REACT_SUBDOMAIN.replace(
+    const subDomain = import.meta.env.VITE_REACT_FRONT_END_URL.replace(
         /^https?:\/\//,
         ""
     );
@@ -40,7 +40,7 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
     const fetchMyShortUrl = async () => {
         setLoader(true);
         try {
-            const { data } = await api.get(`/api/urls/analytics/${selectedUrl}?startDate=2024-01-01T00:00:00&endDate=2025-12-31T23:59:59`,
+            const { data } = await api.get(`/api/urls/analytics/${selectedUrl}?startDate=2024-01-01T00:00:00&endDate=2030-12-31T23:59:59`,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -70,11 +70,12 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
             <div className={`flex sm:flex-row flex-col  sm:justify-between w-full sm:gap-0 gap-5 py-5 `}>
                 <div className="flex-1 sm:space-y-1 max-w-full overflow-x-auto overflow-y-hidden ">
                     <div className="text-slate-900 pb-1 sm:pb-0   flex items-center gap-2 ">
-                        <a href={`${import.meta.env.VITE_REACT_SUBDOMAIN}/${shortUrl}`}
-                            target="_blank"
-                            className=" text-[17px]  font-montserrat font-[600] text-linkColor ">
-                            {subDomain + "/" + `${shortUrl}`}
-                        </a>
+                        <Link
+                            target='_'
+                            className='text-[17px]  font-montserrat font-[600] text-linkColor'
+                            to={import.meta.env.VITE_REACT_FRONT_END_URL + "/s/" + `${shortUrl}`}>
+                            {subDomain + "/s/" + `${shortUrl}`}
+                        </Link>
                         <FaExternalLinkAlt className="text-linkColor" />
                     </div>
                     <div className="flex items-center gap-1 ">
@@ -105,7 +106,7 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
                 <div className="flex  flex-1  sm:justify-end items-center gap-4">
                     <div
                         onClick={() => {
-                            const textToCopy = `${import.meta.env.VITE_REACT_SUBDOMAIN + "/s/" + `${shortUrl}`}`;
+                            const textToCopy = `${import.meta.env.VITE_REACT_FRONT_END_URL + "/s/" + `${shortUrl}`}`;
 
                             navigator.clipboard.writeText(textToCopy).then(() => {
                                 setIsCopied(true);
